@@ -16,9 +16,11 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { username } = req.body;
   try {
-    console.log("load save username");
+    console.log("load save username", username);
     const newUser = new User({ username });
+    console.log("get user ", newUser);
     await newUser.save();
+
     res.status(200).json("User Added!");
   } catch (error) {
     res.status(400).json({ message: error });
